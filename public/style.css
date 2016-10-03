@@ -1,0 +1,104 @@
+a:hover {
+    text-decoration: none;
+}
+
+.form-control {
+    margin-bottom: 5px;
+}
+
+.headerMargin {
+    margin-top: 70px;
+}
+
+
+.list-group-item {
+    border: none;
+}
+
+.landscapeSideBar {
+    display: none;
+}
+
+.landscapeNav {
+    display: none;
+}
+
+.glyphicon:not(.glyphicon-cog):not(.glyphicon-align-justify){
+    color: white;
+}
+
+.navbar-brand {
+    margin-left: 15px;
+
+    color: white;
+}
+
+.navbar-brand:hover {
+    color: white;
+}
+
+.navbar-plus {
+    padding-right: 25px;
+}
+
+.no-padding {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.navbar-text {
+    margin-left: 0px;
+    margin-right: 0px;
+
+}
+
+
+.noBold {
+    font-weight:normal;
+}
+
+.widget-actions {
+    position: absolute;
+    background: white;
+    z-index: 1;
+    right: 15px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+
+    border-bottom-left-radius: 5px;
+}
+iframe {
+    width: 100%;
+    height: auto;
+}
+
+body {
+    padding-bottom: 55px;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 768px) {
+    .landscapeSideBar{
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+    }
+    .landscapeNav {
+        display: block;
+
+    }
+
+
+    .sideBarBrand {
+        margin-left: 0px !important;
+
+    }
+
+
+
+
+}
