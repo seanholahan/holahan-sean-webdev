@@ -1,0 +1,45 @@
+
+<nav class="navbar navbar-light bg-primary ">
+    <div class="container-fluid">
+        <p class="navbar-text pull-left no-padding">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+        </p>
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand leftPad">New Page</a>
+        </div>
+        <p class="navbar-text pull-right">
+            <a ng-click="model.createPage(paged)" class="navbar-link">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </a>
+        </p>
+
+    </div>
+</nav>
+<div class="col-lg-12 container-fluid">
+
+    <form>
+        <div>
+            <label for="name" class="noBold">Name</label>
+            <input ng-model="paged.name" type="text" class="form-control" id="name" placeholder="Page Name">
+        </div>
+        <div>
+            <label for="title" class="noBold">Title</label>
+            <input ng-model="paged.title" type="text" class="form-control" id="title" placeholder="Page Name">
+        </div>
+
+
+    </form>
+</div>
+
+
+<nav class="navbar navbar-light bg-primary navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}" class="navbar-link">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </a>
+        </p>
+    </div>
+</nav>

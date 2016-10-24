@@ -1,0 +1,93 @@
+
+<nav class="navbar navbar-light bg-primary ">
+    <div class="container-fluid">
+        <p class="navbar-text pull-left no-padding">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+        </p>
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand leftPad">Widgets</a>
+        </div>
+        <p class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </a>
+        </p>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+
+
+
+    <div>
+        <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+            <div class="widget-actions">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </div>
+
+            <div ng-switch="widget.size" ng-switch-when="HEADER">
+
+                <h1 ng-switch-when="1">{{widget.text}}</h1>
+                <h2 ng-switch-when="2">{{widget.text}}</h2>
+                <h3 ng-switch-when="3">{{widget.text}}</h3>
+                <h4 ng-switch-when="4">{{widget.text}}</h4>
+                <h5 ng-switch-when="5">{{widget.text}}</h5>
+                <h6 ng-switch-when="6">{{widget.text}}</h6>
+
+
+            </div>
+            <div ng-switch-when="YOUTUBE">
+                <iframe ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}" frameborder="0"
+                        allowfullscreen></iframe>
+            </div>
+            <div ng-switch-when="IMAGE">
+                <img>
+                <img width="20px" src="{{widget.url}}">
+
+            </div>
+            <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)">
+                {{widget.text}}
+            </div>
+        </div>
+
+
+
+
+
+
+     </div>
+
+
+
+</div>
+
+
+
+
+
+<nav class="navbar navbar-light bg-primary navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-left">
+            <a href="profile.html" class="navbar-link">
+                <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            </a>
+        </p>
+
+        <p class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}" class="navbar-link">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </a>
+        </p>
+
+
+    </div>
+
+</nav>

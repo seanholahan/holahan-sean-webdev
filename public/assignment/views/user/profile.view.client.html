@@ -1,0 +1,56 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand  leftPad">Profile</a>
+        </div>
+        <p class="navbar-text pull-right ">
+            <a href="#/user/{{model.userId}}" class="navbar-link">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </a>
+        </p>
+
+    </div>
+</nav>
+
+
+<div class="col-sm-12">
+    <form>
+
+        <div>
+            <label for="username">Username</label>
+            <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="exampleUser">
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="exampleEmail">
+        </div>
+
+        <div>
+            <label  for="firstName">First Name</label>
+            <input ng-model="model.user.firstName" type="text" class="form-control" id="firstName" placeholder="John">
+        </div>
+
+        <div>
+            <label for="lastName">Last Name</label>
+            <input ng-model="model.user.lastName" type="text" class="form-control" id="lastName" placeholder="Appleseed">
+        </div>
+    </form>
+
+
+    <a href="#/user/{{model.user._id}}/website" type="button" class="btn btn-primary btn-block">Websites</a>
+    <a href="#/login" type="button" class="btn btn-danger btn-block">Logout</a>
+
+
+</div>
+
+
+<nav class="navbar navbar-light bg-primary navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a href="#/user/{{model.user._id}}" class="navbar-link">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </a>
+        </p>
+    </div>
+</nav>
