@@ -16,12 +16,19 @@
         vm.deleteWidget = deleteWidget;
 
 
-
         function init() {
-            vm.widgets = WidgetService.findWidgetById(vm.widgetId);
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            WidgetService
+                .findWidgetById(vm.widgetId)
+                .success(function(widget){
+                    if(widget != '0') {
+                        vm.widget = widget;
+                    }
+                })
+                .error(function(){
 
-        } init();
+                });
+        }
+        init();
 
 
         function updateWidget(website) {

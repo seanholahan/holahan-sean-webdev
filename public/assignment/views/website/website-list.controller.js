@@ -1,6 +1,4 @@
-/**
- * Created by seanHolahan on 10/19/16.
- */
+
 (function (angular) {
 
 
@@ -13,12 +11,13 @@
 
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesForUser(vm.userId);
+            var promise = WebsiteService.findWebsitesForUser(vm.userId);
+            promise
+                .success(function(websites){
+                    vm.websites = websites;
+                });
         }
         init();
-
-
-
     }
 
 })(window.angular);

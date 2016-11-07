@@ -7,30 +7,42 @@
         .controller("WebsiteNewController", WebsiteNewController)
 
 
-    function WebsiteNewController($routeParams, WebsiteService, $location) {
-        var vm = this;
-        vm.userId = parseInt($routeParams.uid);
-        vm.websiteId = parseInt($routeParams.wid);
-        vm.createWebsite = createWebsite;
 
 
-        function init() {
-            vm.websites = WebsiteService.findWebsitesForUser(vm.userId);
+
+        function WebsiteNewController(WebsiteService, $routeParams, $location) {
+            var vm = this;
+            vm.userId = parseInt($routeParams.uid);
+            vm.uid  = $routeParams.uid;
+            vm.wid  = $routeParams.wid;
+            vm.pid  = $routeParams.pid;
+            vm.wgid = $routeParams.wgid;
+            vm.createWebsite =createWebsite;
+
+
+            function createWebsite(uid, website) {
+                WebsiteService
+                    .createWebsite(uid, website)
+                    .success(function(){
+                        $location.url("/user/"+vm.userId+"/website");
+
+                    })
+                    .error(function (error) {
+
+                    });
+
+            }
+
+            function init() {
+                var promise = WebsiteService.findWebsitesForUser(vm.userId);
+                promise
+                    .success(function(websites){
+                        vm.websites = websites;
+                    });
+            }
+            init();
+
 
         }
-        init();
 
-        function createWebsite(website) {
-            website._id = (new Date()).getTime();
-            website.developerId = this.userId;
-            console.log(website);
-            WebsiteService.createWebsite(website);
-
-            $location.url("/user/" + vm.userId + "/website");
-
-            vm.websites = WebsiteService.findWebsitesForUser(vm.userId);
-            console.log(vm.websites);
-        }
-    }
-
-}) (window.angular);
+    })(window.angular);

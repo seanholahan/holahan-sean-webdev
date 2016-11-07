@@ -10,7 +10,21 @@ app.use(express.static(__dirname + '/public'));
 
 require ("./test/app.js")(app);
 
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+require("./assignment/app.js")(app);
 
-app.listen(port, ipaddress);
+var websites = [
+    {_id: 321, name: 'facebook.com', uid: 123},
+    {_id: 432, name: 'wikipedia.org', uid: 123},
+    {_id: 543, name: 'twitter.com', uid: 234}
+];
+
+app.get("/websites", function(req, res){
+    res.send(websites);
+});
+
+
+
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
+var port = process.env.OPENSHIFT_NODEJS_PORT || 63342;
+
+app.listen(port, ipaddress);;

@@ -1,3 +1,4 @@
-(function () {
-    angular.module("WebAppMaker", ["ngRoute"]);
+(function (){ // IIFE
+    angular
+        .module("WebAppMaker", ["ngRoute", "wamDirectives"]);
 })();

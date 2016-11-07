@@ -1,46 +1,21 @@
-(function (angular) {
+(function(){
+    angular
+        .module("WebAppMaker")
+        .controller("RegisterController", RegisterController);
 
-    var WebAppMaker = angular.module("WebAppMaker");
-
-    WebAppMaker.controller("RegisterController", RegisterController);
-
-
-
-
-    function RegisterController($routeParams, $location, UserService) {
+    function RegisterController(UserService, $location) {
         var vm = this;
-        vm.createUser = createUser;
+        vm.register = register;
 
+        function register(username, password) {
+            UserService
+                .createUser(username, password)
+                .success(function(user){
+                    $location.url("/user/"+user._id);
+                })
+                .error(function (error) {
 
-        function createUser(username, password, passwordVerify) {
-
-
-            if (password !== passwordVerify) {
-                vm.error = "mismatch password";
-            } else {
-                var user = {_id: "13",
-                    username: "",
-                    password: "",
-                    firstName: "",
-                    lastName: ""};
-
-                user._id = (new Date()).getTime();
-                user.username = this.
-
-                UserService.createUser(user);
-
-                $location.url("/user/" + vm.userId + "/website");
-
-                console.log(vm.websites);
-
-                    vm.users = UserService.findWebsitesForUser(vm.userId);
-
-                }
-                $location.url("/user/"+ user._id)
-
+                });
         }
     }
-
-
-
-})(window.angular)
+})();

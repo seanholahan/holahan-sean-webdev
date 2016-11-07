@@ -2,7 +2,7 @@
 <nav class="navbar navbar-light bg-primary ">
     <div class="container-fluid">
         <p class="navbar-text pull-left no-padding">
-            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+            <a href="#/user/{{model.uid}}/website/{{model.wid}}/page" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             </a>
         </p>
@@ -10,7 +10,7 @@
             <a class="navbar-brand leftPad">Widgets</a>
         </div>
         <p class="navbar-text pull-right">
-            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link">
+            <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new" class="navbar-link">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </p>
@@ -26,7 +26,7 @@
     <div>
         <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
             <div class="widget-actions">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{model.wid}}">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
                 <span class="glyphicon glyphicon-align-justify"></span>
@@ -56,16 +56,7 @@
                 {{widget.text}}
             </div>
         </div>
-
-
-
-
-
-
      </div>
-
-
-
 </div>
 
 
@@ -82,7 +73,7 @@
         </p>
 
         <p class="navbar-text pull-right">
-            <a href="#/user/{{model.userId}}" class="navbar-link">
+            <a href="#/user/{{model.uid}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             </a>
         </p>

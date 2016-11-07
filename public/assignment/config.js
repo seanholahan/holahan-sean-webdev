@@ -1,7 +1,7 @@
 (function() {
     angular
         .module("WebAppMaker")
-        .config(Config);
+        .config(Config)
 
     function Config($routeProvider) {
 
@@ -77,11 +77,10 @@
                 controllerAs: "model"
             })
 
-            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
+            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid",  {
                 templateUrl: "views/widget/widget-edit.view.client.html",
                 controller: "WidgetEditController",
                 controllerAs: "model"
-
             })
 
             .when("/index", {
