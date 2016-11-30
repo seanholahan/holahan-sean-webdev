@@ -1,48 +1,37 @@
-/**
- * Created by seanHolahan on 10/20/16.
- */
-(function (angular) {
 
-    var WebAppMaker = angular.module("WebAppMaker")
-        .controller("WebsiteNewController", WebsiteNewController)
+(function () {
+    angular
+        .module("WebAppMaker")
+        .controller("WebsiteNewController", WebsiteNewController);
 
+    function WebsiteNewController($routeParams, WebsiteService, $location) {
+        var vm = this;
+        vm.usersId = $routeParams['uid'];
 
+        vm.createWebsite = createWebsite;
 
+        function init() {
+            var promise = WebsiteService.findWebsitesForUser(vm.usersId);
 
-
-        function WebsiteNewController(WebsiteService, $routeParams, $location) {
-            var vm = this;
-            vm.userId = parseInt($routeParams.uid);
-            vm.uid  = $routeParams.uid;
-            vm.wid  = $routeParams.wid;
-            vm.pid  = $routeParams.pid;
-            vm.wgid = $routeParams.wgid;
-            vm.createWebsite =createWebsite;
-
-
-            function createWebsite(uid, website) {
-                WebsiteService
-                    .createWebsite(uid, website)
-                    .success(function(){
-                        $location.url("/user/"+vm.userId+"/website");
-
-                    })
-                    .error(function (error) {
-
-                    });
-
-            }
-
-            function init() {
-                var promise = WebsiteService.findWebsitesForUser(vm.userId);
-                promise
-                    .success(function(websites){
-                        vm.websites = websites;
-                    });
-            }
-            init();
-
-
+            promise
+                .success(function(user){
+                    vm.websites = user.websites;
+                });
         }
+        init();
 
-    })(window.angular);
+
+        function createWebsite(website , uid) {
+            console.log(website);
+            console.log("controller.client website");
+            console.log(vm.usersId);
+            console.log("controller.client input userid");
+
+            WebsiteService
+                .createWebsite(website, uid)
+                   // vm.websites = website.websites;
+                    $location.url("/user/"+vm.usersId+"/website");
+               // });
+        }
+    }
+})();

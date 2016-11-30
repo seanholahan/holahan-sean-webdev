@@ -10,7 +10,7 @@
             <a class="navbar-brand leftPad">New Page</a>
         </div>
         <p class="navbar-text pull-right">
-            <a ng-click="model.createPage(model.websiteId, model.paged)" class="navbar-link">
+            <a ng-click="model.createPage(model.websiteId, model.page)" class="navbar-link">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </a>
         </p>
@@ -22,11 +22,11 @@
     <form>
         <div>
             <label for="name" class="noBold">Name</label>
-            <input ng-model="model.paged.name" type="text" class="form-control" id="name" placeholder="Page Name">
+            <input ng-model="model.page.name" type="text" class="form-control" id="name" placeholder="Page Name">
         </div>
         <div>
             <label for="title" class="noBold">Title</label>
-            <input ng-model="model.paged.title" type="text" class="form-control" id="title" placeholder="Page Name">
+            <input ng-model="model.page.title" type="text" class="form-control" id="title" placeholder="Page Name">
         </div>
 
 

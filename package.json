@@ -4,9 +4,13 @@
   "description": "Web Dev at Northeastern University",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.15.1",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
-    "mongoose": "^4.4.15"
+    "express-session": "^1.14.2",
+    "mongoose": "^4.6.7",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {

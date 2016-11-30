@@ -7,10 +7,10 @@
 
     function WidgetChooseController($routeParams, WidgetService, $location) {
         var vm = this;
-        vm.pageId = parseInt($routeParams.pid);
-        vm.userId = parseInt($routeParams.uid);
-        vm.websiteId = parseInt($routeParams.wid);
-        vm.widgetId = parseInt($routeParams.wgid);
+        vm.pageId = $routeParams.pid;
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.widgetId = $routeParams.wgid;
 
 
 

@@ -9,22 +9,17 @@
 
     function PageNewController($routeParams, PageService, $location) {
         var vm = this;
-        vm.userId = parseInt($routeParams.uid);
-        vm.websiteId = parseInt($routeParams.wid);
-        vm.pageId = parseInt($routeParams.pid);
-        vm.userId = parseInt($routeParams.uid);
-        vm.websiteId = parseInt($routeParams.wid);
-        vm. widgetId = parseInt($routeParams.wgid);
+        vm.userId = $routeParams['uid'];
+        vm.pageId = $routeParams['pid'];
+        vm.websiteId = $routeParams['wid'];
+
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
         vm.createPage = createPage;
-        vm.paged = { "_id": 0,
-            "name": "",
-            "websiteId": "",
-            "description": ""};
+
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+            vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
             vm.page = PageService.findPageById(vm.pageId);
 
         }
@@ -41,14 +36,11 @@
             $location.url("/user/" +vm.userId + "/website/"+vm.websiteId + "/page");
         }
 
-        function createPage(paged) {
-
-            vm.paged._id = (new Date()).getTime();
-            vm.paged.websiteId = this.websiteId;
-
-
-            PageService.createPage(vm.paged);
-
+        function createPage(websiteId, page) {
+            console.log(page);
+            console.log(websiteId);
+            console.log("dictation");
+            PageService.createPage(websiteId, page);
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
 
       //      vm.pages = PageService.findWebsitesForUser(vm.userId);

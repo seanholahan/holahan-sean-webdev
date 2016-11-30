@@ -4,7 +4,7 @@
             <a class="navbar-brand  leftPad">Profile</a>
         </div>
         <p class="navbar-text pull-right ">
-            <a ng-click="model.updateUser()" class="navbar-link">
+            <a ng-click="model.updateUser(model.user)" class="navbar-link">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </a>
         </p>
@@ -13,17 +13,17 @@
 </nav>
 
 
-<div class="col-sm-12">
+
+<div class="col-sm-12" ng-controller="ProfileController">
     <form>
 
         <div>
             <label for="username">Username</label>
             <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="exampleUser">
         </div>
-
         <div>
             <label for="email">Email</label>
-            <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="exampleEmail">
+            <input ng-model="model.user.email" type="text" class="form-control" id="email" placeholder="exampleEmail">
         </div>
 
         <div>
@@ -40,6 +40,7 @@
 
     <a href="#/user/{{model.user._id}}/website" type="button" class="btn btn-primary btn-block">Websites</a>
     <a href="#/login" type="button" class="btn btn-danger btn-block">Logout</a>
+    <a href="#/login" type="button" class="btn btn-danger btn-block">unregister</a>
 
 
 </div>
@@ -48,7 +49,7 @@
 <nav class="navbar navbar-light bg-primary navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="#/user/{{model.user._id}}" class="navbar-link">
+            <a href="#/user/{{model.user._id}}"ng-click="createUser(user)" class="navbar-link">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             </a>
         </p>

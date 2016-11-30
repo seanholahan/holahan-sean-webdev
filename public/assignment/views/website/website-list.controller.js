@@ -1,23 +1,23 @@
 
-(function (angular) {
-
-
-        var WebAppMaker = angular.module("WebAppMaker")
-            .controller("WebsiteListController", WebsiteListController)
+(function(){
+    angular
+        .module("WebAppMaker")
+        .controller("WebsiteListController", WebsiteListController);
 
     function WebsiteListController($routeParams, WebsiteService) {
         var vm = this;
-         vm.userId = parseInt($routeParams.uid);
-
+        vm.userId = $routeParams['uid'];
 
         function init() {
             var promise = WebsiteService.findWebsitesForUser(vm.userId);
             promise
-                .success(function(websites){
-                    vm.websites = websites;
+                .success(function(user){
+                    console.log(user.websites);
+                    console.log("groovy");
+
+                    vm.websites = user.websites;
                 });
         }
         init();
     }
-
-})(window.angular);
+})();

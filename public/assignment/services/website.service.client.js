@@ -14,9 +14,16 @@
         };
         return api;
 
-        function removeWebsite(websiteId) {
+        function removeWebsite(websiteId, userId) {
+
             var url = "/api/website/"+ websiteId;
-            $http.delete(url);
+
+            console.log(url);
+            console.log(userId);
+            console.log(websiteId);
+
+            console.log("websiteserviceClient REMOVE");
+            return $http.delete(url, userId, websiteId);
 
         }
 
@@ -25,13 +32,22 @@
             $http.put(url, website);
         }
 
-        function createWebsite(uid, website) {
+        function createWebsite(website, uid) {
+
             var url = "/api/user/"+uid+"/website";
-            $http.post(url, website);
+            console.log(url);
+
+            console.log("websiteserviceClient");
+            var website = {
+                name: website.name,
+                description: website.description
+            };
+            return $http.post(url, website);
         }
 
         function findWebsiteById(wid) {
             var url = "/api/website/"+wid;
+            console.log("getting from client");
             return $http.get(url);
 
         }

@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
         <p class="navbar-text pull-left no-padding">
-            <a href="#/user/{{model.uid}}/website" class="navbar-link">
+            <a href="#/user/{{model.usersId}}/website" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             </a>
         </p>
@@ -27,7 +27,7 @@
             <a class=" navbar-brand">New Website</a>
         </div>
         <div class="navbar-text pull-right">
-            <a ng-click="model.createWebsite(model.uid, model.website)" class="navbar-link">
+            <a ng-click="model.createWebsite( model.website, model.usersId)" class="navbar-link">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </a>
         </div>
@@ -40,9 +40,9 @@
     <div class="col-sm-4 col-md-3 landscapeSideBar">
         <ul class="list-group">
             <li ng-repeat="website in model.websites" class="list-group-item">
-                <a href="#/user/{{model.uid}}/website/{{model.wid}}">{{website.name}}</a>
+                <a href="#/user/{{model.usersId}}/website/22{{website._id}}/page">{{website.name}}</a>
                 <p class="pull-right">
-                    <a href="#/user/{{model.uid}}/website/{{model.wid}}">
+                    <a href="#/user/{{model.usersId}}/website/{{website._id}}">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                     </a>

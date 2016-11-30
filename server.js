@@ -5,12 +5,18 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));
 
-require ("./test/app.js")(app);
 
+
+var mongoose = require('mongoose');
+mongoose.createConnection('mongodb://localhost/userdb');
+
+require ("./test/app.js")(app);
 require("./assignment/app.js")(app);
+
+
+
 
 var websites = [
     {_id: 321, name: 'facebook.com', uid: 123},
@@ -24,7 +30,9 @@ app.get("/websites", function(req, res){
 
 
 
+
+
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
 var port = process.env.OPENSHIFT_NODEJS_PORT || 63342;
 
-app.listen(port, ipaddress);;
+app.listen(port, ipaddress);

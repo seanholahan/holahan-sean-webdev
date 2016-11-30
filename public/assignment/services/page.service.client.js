@@ -19,20 +19,37 @@
             findPagesByWebsiteId: findPagesByWebsiteId,
             findPageById: findPageById,
             updatePage: updatePage,
-            deletePage : deletePage
+            deletePage : deletePage,
+            findAllPagesForWebsite: findAllPagesForWebsite
         };
 
         return api;
 
-        function createPage(websiteId, page) {
+        function findAllPagesForWebsite(websiteId) {
             var url = "/api/website/"+websiteId+"/page";
-            $http.post(url, website);
+            console.log(websiteId);
+            console.log("page service client -> websiteId");
+            return $http.get(url);
+        }
+
+        function createPage(websiteId, page) {
+            console.log(websiteId);
+
+            var url = "/api/website/"+websiteId+"/page";
+            var page = {
+                name: page.name,
+                title: page.title
+            };
+            console.log(page);
+            console.log("pageserviceClient");
+            return $http.post(url, page);
         }
 
         function findPagesByWebsiteId(websiteId) {
             var url = "/api/website/"+websiteId+"/page";
-            console.log("yo");
-            return $http.get(url);
+            console.log(websiteId);
+            console.log("page service client -> websiteId");
+            return $http.get(url, websiteId);
 
         }
 
@@ -43,12 +60,13 @@
 
         function updatePage(pageId, page) {
             var url = "/api/page/"+pageId;
+            console.log(url, "URL BETCH");
              $http.put(url, page);
         }
 
-        function deletePage(pageId) {
+        function deletePage(pageId, websiteId) {
             var url = "/api/page/"+pageId;
-            $http.delete(url);
+            return $http.delete(url, pageId, websiteId);
         }
     }
 }) (window.angular);

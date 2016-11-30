@@ -7,11 +7,14 @@
         var vm = this;
         vm.login = login;
 
-        function login(username, password) {
-            var promise = UserService.findUserByCredentials(username, password);
+        function login(user) {
+            console.log("loggin in");
+           // var promise = UserService.findUserByCredentials(username, password);
+            var promise = UserService.login(user);
             promise
                 .success(function(user){
-                    if(user === '0') {
+
+                    if(user === '0' || user === "") {
                         vm.error = "No such user";
                     } else {
                         $location.url("/user/" + user._id);

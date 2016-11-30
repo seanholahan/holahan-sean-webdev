@@ -6,7 +6,7 @@
 
     function PageListController($routeParams, PageService) {
         var vm = this;
-        vm.websiteId = parseInt($routeParams.wid);
+        vm.websiteId = $routeParams.wid;
         vm.uid  = $routeParams.uid;
         vm.wid  = $routeParams.wid;
         vm.pid  = $routeParams.pid;
@@ -18,10 +18,19 @@
 
         function init() {
 
-            var promise = PageService.findPagesByWebsiteId(vm.websiteId);
+            var promise = PageService.findAllPagesForWebsite(vm.websiteId);
             promise
                 .success(function(pages){
+
+                  //  console.log(website.pages);
+                    console.log("page list controller.client -> page")
+                    //console.log(newPage.pages)
+                    console.log(vm);
+                    console.log("page list controller.client -> vm")
+
                     vm.pages = pages;
+                    console.log(vm.pages);
+
                 });
 
         }
